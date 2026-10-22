@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Environnements
+.venv/
+venv/
+env/
+
+# Données locales / sorties (ne pas committer)
+data/cache/
+reports/*.csv
+*.local
+
+# OS
+.DS_Store
