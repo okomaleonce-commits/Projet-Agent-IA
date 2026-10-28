@@ -19,3 +19,6 @@ reports/*.csv
 
 # OS
 .DS_Store
+
+# Hook Heretic (log d'installation en arrière-plan)
+.claude/hooks/heretic-install.log
