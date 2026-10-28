@@ -55,6 +55,19 @@ heretic --model google/gemma-3-12b-it --evaluate-model p-e-w/gemma-3-12b-it-here
 En fin de run, Heretic propose de sauvegarder le modèle, l'uploader sur HuggingFace,
 discuter avec pour tester, et/ou lancer des benchmarks.
 
+## Installation automatique en session cloud
+
+Un hook `SessionStart` (`.claude/hooks/session-start-heretic.sh`, enregistré dans
+`.claude/settings.json`) installe Heretic au démarrage de chaque session Claude Code.
+Le conteneur cloud étant éphémère (dépôt recloné à chaque session), le hook :
+
+- est **idempotent** : no-op immédiat si `heretic` est déjà présent ;
+- est **non bloquant** : l'installation (qui tire PyTorch, plusieurs Go) est lancée
+  en arrière-plan, la session démarre sans l'attendre.
+
+La progression est journalisée dans `.claude/hooks/heretic-install.log` (ignoré par git).
+La commande `heretic` devient disponible quelques minutes après le démarrage.
+
 ## Avertissement
 
 Heretic **retire les garde-fous de sécurité** des modèles. À réserver à un usage
